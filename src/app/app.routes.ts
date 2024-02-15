@@ -1,8 +1,9 @@
 import { Routes } from '@angular/router';
 import { LoginPageComponent } from './auth/pages/loginPage/loginPage.component';
 import { RegisterPageComponent } from './auth/pages/registerPage/registerPage.component';
-import { DashboardLayoutComponent } from './dashboard/layouts/dashboardLayout/dashboardLayout.component';
+import { DashboardLayoutComponent } from './dashboard/layouts/dashboard-layout/dashboard-layout.component';
 import { AuthLayoutComponent } from './auth/layouts/authLayout/authLayout.component';
+import { isAuthenticatedGuard } from './guards/isAuthenticated.guard';
 
 export const routes: Routes = [
     {
@@ -16,7 +17,7 @@ export const routes: Routes = [
         ]
     },
     {
-        path: 'dashboard', component: DashboardLayoutComponent
+        path: 'dashboard', component: DashboardLayoutComponent, canActivate: [isAuthenticatedGuard]
     },
     {
         path: '**', redirectTo: 'auth'
