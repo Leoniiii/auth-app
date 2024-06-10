@@ -51,7 +51,6 @@ export class AuthService {
     let token;    
 
     if (!token) return of(false);
-
     const headers = new HttpHeaders()
       .set('Authorization', `Bearer ${token}`)
 
